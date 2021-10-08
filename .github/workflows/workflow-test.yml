@@ -3,6 +3,9 @@ name: workflow-test
 # Allows you to run this workflow manually from the Actions tab
 on: workflow_dispatch
 
+# Ensure we only have one instance of this workflow running at a time
+concurrency: ${{ github.ref }}
+
 jobs:
   build-job:
     runs-on: ubuntu-latest
