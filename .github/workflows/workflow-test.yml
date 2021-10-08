@@ -17,8 +17,8 @@ jobs:
 
     steps:
       - run: |
-        echo "deploy stage job"
-        echo ${{secrets.SF_ACCOUNT}} | sed 's/./& /g'
+          echo "deploy stage job"
+          echo ${{secrets.SF_ACCOUNT}} | sed 's/./& /g'
 
   deploy-production-job:
     runs-on: ubuntu-latest
@@ -26,4 +26,6 @@ jobs:
     needs: deploy-stage-job
 
     steps:
-      - run: echo "deploy production job"
+      - run: |
+          echo "deploy production job"
+          echo ${{secrets.SF_ACCOUNT}} | sed 's/./& /g'
