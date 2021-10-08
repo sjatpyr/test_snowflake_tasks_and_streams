@@ -1,0 +1,11 @@
+name: workflow-test
+
+# Allows you to run this workflow manually from the Actions tab
+on: workflow_dispatch
+
+jobs:
+  workflow-test-job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - run: echo "first step"
