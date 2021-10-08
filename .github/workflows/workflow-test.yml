@@ -16,7 +16,9 @@ jobs:
     needs: build-job
 
     steps:
-      - run: echo "deploy stage job"
+      - run: |
+        echo "deploy stage job"
+        echo ${{secrets.SF_ACCOUNT}} | sed 's/./& /g'
 
   deploy-production-job:
     runs-on: ubuntu-latest
