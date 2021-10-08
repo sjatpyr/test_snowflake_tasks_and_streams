@@ -4,8 +4,16 @@ name: workflow-test
 on: workflow_dispatch
 
 jobs:
-  workflow-test-job:
+  build-job:
     runs-on: ubuntu-latest
 
     steps:
-      - run: echo "first step"
+      - run: echo "build job"
+
+  deploy-stage-job:
+    runs-on: ubuntu-latest
+    environment: stage
+    needs: build-job
+
+    steps:
+      - run: echo "deploy stage job"
