@@ -17,3 +17,11 @@ jobs:
 
     steps:
       - run: echo "deploy stage job"
+
+  deploy-production-job:
+    runs-on: ubuntu-latest
+    environment: production
+    needs: deploy-stage-job
+
+    steps:
+      - run: echo "deploy production job"
