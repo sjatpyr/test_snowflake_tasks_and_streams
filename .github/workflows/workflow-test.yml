@@ -1,34 +1,34 @@
-name: workflow-test
+# name: workflow-test
 
-# Allows you to run this workflow manually from the Actions tab
-on: workflow_dispatch
+# # Allows you to run this workflow manually from the Actions tab
+# on: workflow_dispatch
 
-# Ensure we only have one instance of this workflow running at a time
-concurrency: ${{ github.ref }}
+# # Ensure we only have one instance of this workflow running at a time
+# concurrency: ${{ github.ref }}
 
-jobs:
-  build-job:
-    runs-on: ubuntu-latest
+# jobs:
+#   build-job:
+#     runs-on: ubuntu-latest
 
-    steps:
-      - run: echo "build job"
+#     steps:
+#       - run: echo "build job"
 
-  deploy-stage-job:
-    runs-on: ubuntu-latest
-    environment: stage
-    needs: build-job
+#   deploy-stage-job:
+#     runs-on: ubuntu-latest
+#     environment: stage
+#     needs: build-job
 
-    steps:
-      - run: |
-          echo "deploy stage job"
-          echo ${{secrets.SF_ACCOUNT}} | sed 's/./& /g'
+#     steps:
+#       - run: |
+#           echo "deploy stage job"
+#           echo ${{secrets.SF_ACCOUNT}} | sed 's/./& /g'
 
-  deploy-production-job:
-    runs-on: ubuntu-latest
-    environment: production
-    needs: deploy-stage-job
+#   deploy-production-job:
+#     runs-on: ubuntu-latest
+#     environment: production
+#     needs: deploy-stage-job
 
-    steps:
-      - run: |
-          echo "deploy production job"
-          echo ${{secrets.SF_ACCOUNT}} | sed 's/./& /g'
+#     steps:
+#       - run: |
+#           echo "deploy production job"
+#           echo ${{secrets.SF_ACCOUNT}} | sed 's/./& /g'
